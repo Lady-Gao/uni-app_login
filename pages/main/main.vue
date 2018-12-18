@@ -35,7 +35,7 @@
         mounted() {
             let that=this
        setTimeout(() => {
-           uni.getLocation({
+           uni.getLocation({ 
     success: function (res) {
      
             that.latitude=res.latitude
