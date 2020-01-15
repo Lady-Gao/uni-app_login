@@ -17,13 +17,9 @@ const store = new Vuex.Store({
         login({commit},params){
             console.log(8)
             uni.request({
-                url: "http://10.10.11.192:18001/auth/oauth/token",
-                method:"POST",
-                header:{
-                    'Content-Type': 'application/x-www-form-urlencoded' ,
-                    "Authorization": "Basic " + btoa('test:test')
-                },
-                data: "grant_type=newPassword&username="+params.userName+"&password="+params.password+"&enterpriseCode="+params.enterpriseCode,
+                url: "https://et.cvtsp.com/api/login",
+                method:"get",
+                data: params,
                 success: (res) => {
                     commit("login",res)
                     if(res.data.error){
@@ -61,23 +57,23 @@ const store = new Vuex.Store({
         },
         logout({commit},params){
             uni.clearStorage()//清除本地
-            uni.request({
-                url:"http://10.10.11.192:18001/auth/logout",
-                success: (res) => {
-                    uni.showToast({
-                        title: '退出登录',
-                        icon: 'success',
-                        mask: true,
-                        duration: 2000
-                    })
-                },
-                fail: (err) => {
-                    uni.showModal({
-                        content:err.errMsg,
-                        showCancel:false
-                    })
-                },
-            })
+            // uni.request({
+            //     url:"http://10.10.11.192:18001/auth/logout",
+            //     success: (res) => {
+            //         uni.showToast({
+            //             title: '退出登录',
+            //             icon: 'success',
+            //             mask: true,
+            //             duration: 2000
+            //         })
+            //     },
+            //     fail: (err) => {
+            //         uni.showModal({
+            //             content:err.errMsg,
+            //             showCancel:false
+            //         })
+            //     },
+            // })
             
         }
     },

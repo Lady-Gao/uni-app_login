@@ -19,6 +19,7 @@
     page {
         min-height: 100%;
         display: flex;
+		font-size:10px;
     }
 
     .content {

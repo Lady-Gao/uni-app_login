@@ -17,13 +17,13 @@
         mounted() {
         },
         methods: {
-            ...mapActions(['logout']),
+            // ...mapActions(['logout']),
             /**
              * 退出登陆
              */
             bindLogout() {
-                this.logout();
-                uni.reLaunch({
+                // this.logout();
+                uni.navigateTo({
                     url: '../login/login',
                     });
                    

@@ -6,6 +6,15 @@
                 </map>
             </view>
         </view>  
+         <view class="input-row ">
+                <text class="title"> 纬度： {{latitude}}</text>
+            </view>
+         <view class="input-row ">
+                <text class="title">经度： {{longitude}}</text>
+            </view>
+        <view class="btn-row">
+            <button type="primary" class="primary" @tap="getlatlog">获取当前经纬度</button>
+        </view>
     </view>
 </template>
 
@@ -17,13 +26,9 @@
 			data(){
 				return {
 					 title: 'map',
-            latitude: 39.909,
-            longitude: 116.39742,
-            covers: [{
-                latitude: 39.909,
-                longitude: 116.39742, 
-                iconPath: '../../static/qq.png'
-            }]
+            latitude: null,
+            longitude:null,
+            covers: []
 				}
 			},
         computed:{
@@ -33,25 +38,7 @@
             }
         },
         mounted() {
-            let that=this
-       setTimeout(() => {
-           uni.getLocation({
-    success: function (res) {
-     
-            that.latitude=res.latitude
-            that.longitude=res.longitude
- that.covers= [{
-                latitude: res.latitude,
-                longitude: res.longitude, 
-                iconPath: '../../static/qq.png'
-            }]
-        console.log('位置名称：' + res.name);
-        console.log('详细地址：' + res.address);
-        console.log('纬度：' + res.latitude);
-        console.log('经度：' + res.longitude);
-    }
-});
-       }, 10000);
+           
         },
         onShow() {
             return
@@ -85,6 +72,27 @@
         methods:{
             markertap(){
                 console.log("markertap")
+            },
+            getlatlog(){
+                 let that=this
+           uni.getLocation({
+    success: function (res) {
+     console.log(res)
+            that.latitude=res.latitude
+            that.longitude=res.longitude
+ that.covers= [{
+                latitude: res.latitude,
+                longitude: res.longitude, 
+                iconPath: '../../static/img/qq.png',
+                width:45,
+                height:50
+            }]
+        console.log('位置名称：' + res.name);
+        console.log('详细地址：' + res.address);
+        console.log('纬度：' + res.latitude);
+        console.log('经度：' + res.longitude);
+    }
+});
             }
 
         },

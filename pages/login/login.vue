@@ -7,7 +7,7 @@
             </view>
             <view class="input-row border">
                 <text class="title">账号：</text>
-                <input type="text" v-model="userName" placeholder="请输入账号">
+                <input type="text" v-model="account" placeholder="请输入账号">
             </view>
             <view class="input-row">
                 <text class="title">密码：</text>
@@ -43,17 +43,18 @@
          * tokent验证
          */
       
-          if(uni.getStorageSync('USERS_KEY')){
-               uni.reLaunch({
-                        url: '../main/main'
-                });
-          }
+          // if(uni.getStorageSync('USERS_KEY')){
+          //      uni.reLaunch({
+          //               url: '../main/main'
+          //       });
+          // }
         },
         data() {
             return {
-                enterpriseCode:"111111111",
-                userName: 'test2',
-                password: '123456',
+                enterpriseCode: 'a0110391', 
+                        account: 'guo6',
+                        password: 'dcb994576041058b6298b7f432e9e5c0416022829794eee62a4f7025eb1b8790a013227282d20d0566050d1c17f7d93eb2fdc135b017022ebda76f0f229e353f',
+                        language: 'zh_CN',
             }
         },
         methods: {
@@ -63,9 +64,10 @@
              */
             bindLogin(){
                 this.login({
-                    enterpriseCode:this.enterpriseCode,
-                    userName:this.userName,
-                    password:this.password
+                   enterpriseCode: 'a0110391',
+                           account: 'guo6',
+                           password: 'dcb994576041058b6298b7f432e9e5c0416022829794eee62a4f7025eb1b8790a013227282d20d0566050d1c17f7d93eb2fdc135b017022ebda76f0f229e353f',
+                           language: 'zh_CN',
                 })
             }
         },
